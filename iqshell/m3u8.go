@@ -144,9 +144,9 @@ func (m *BucketManager) M3u8ReplaceDomain(bucket string, m3u8Key string, newDoma
 		err = errors.New("invalid m3u8 file")
 		return
 	}
-	if !strings.HasSuffix(newDomain, "/") {
-		newDomain = newDomain + "/"
-	}
+	//if !strings.HasSuffix(newDomain, "/") {
+	//	newDomain = newDomain + "/"
+	//}
 
 	newM3u8Lines := make([]string, 0, 200)
 	var newLine string
@@ -170,7 +170,7 @@ func (m *BucketManager) M3u8ReplaceDomain(bucket string, m3u8Key string, newDoma
 				}
 			} else {
 				if newDomain != "" {
-					newLine = fmt.Sprintf("%s%s", newDomain, line)
+					newLine = fmt.Sprintf("%s/%s", newDomain, line)
 				} else {
 					newLine = line
 				}
